@@ -1,196 +1,317 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Amalsha Fernando | Engineering Agentic Intelligence</title>
-  <meta content="AI Engineer & Data Scientist specializing in Agentic AI, MLOps, and TTS Engine development."
-    name="description">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#1D9E75;--accent-light:#E1F5EE;--accent-mid:#5DCAA5;--text-p:var(--color-text-primary);--text-s:var(--color-text-secondary);--bg-p:var(--color-background-primary);--bg-s:var(--color-background-secondary);--bd:var(--color-border-tertiary)}
+body{font-family:var(--font-sans);background:var(--bg-p);color:var(--text-p);font-size:15px;line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:none}
+nav{position:sticky;top:0;z-index:100;background:var(--bg-p);border-bottom:0.5px solid var(--bd);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-logo{font-size:15px;font-weight:500;color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-size:13px;color:var(--text-s);transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.hero{padding:5rem 2rem 4rem;max-width:780px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:#0F6E56;font-size:12px;padding:4px 12px;border-radius:20px;margin-bottom:1.5rem}
+.hero h1{font-size:42px;font-weight:500;line-height:1.2;margin-bottom:1rem}
+.hero h1 span{color:var(--accent)}
+.hero-sub{color:var(--text-s);font-size:16px;max-width:520px;margin:0 auto 2rem}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:10px 22px;border-radius:var(--border-radius-md);font-size:14px;cursor:pointer;transition:opacity 0.2s}
+.btn-primary:hover{opacity:0.85}
+.btn-outline{background:transparent;color:var(--accent);border:0.5px solid var(--accent);padding:10px 22px;border-radius:var(--border-radius-md);font-size:14px;cursor:pointer;transition:background 0.2s}
+.btn-outline:hover{background:var(--accent-light)}
+.hero-stats{display:flex;justify-content:center;gap:2rem;margin-top:3rem;padding-top:2rem;border-top:0.5px solid var(--bd);flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:22px;font-weight:500;color:var(--accent)}
+.stat-label{font-size:12px;color:var(--text-s);margin-top:2px}
+section{padding:3.5rem 2rem;max-width:780px;margin:0 auto}
+.section-label{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.5rem;font-weight:500}
+.section-title{font-size:22px;font-weight:500;margin-bottom:0.5rem}
+.section-sub{color:var(--text-s);font-size:14px;margin-bottom:2.5rem}
+.divider{border:none;border-top:0.5px solid var(--bd);max-width:780px;margin:0 auto}
+.timeline{display:flex;flex-direction:column;gap:1.5rem}
+.tl-item{display:grid;grid-template-columns:140px 1fr;gap:1.5rem}
+.tl-date{font-size:12px;color:var(--text-s);padding-top:3px;line-height:1.5}
+.tl-body{border-left:2px solid var(--accent-light);padding-left:1.25rem;position:relative}
+.tl-body::before{content:'';position:absolute;left:-5px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.tl-company{font-size:12px;color:var(--accent);margin-bottom:3px}
+.tl-role{font-size:15px;font-weight:500;margin-bottom:6px}
+.tl-desc{font-size:13px;color:var(--text-s);line-height:1.6}
+.tl-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{background:var(--bg-s);border:0.5px solid var(--bd);font-size:11px;padding:3px 8px;border-radius:20px;color:var(--text-s)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.skill-card{background:var(--bg-p);border:0.5px solid var(--bd);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;transition:border-color 0.2s,transform 0.2s}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.skill-icon{font-size:20px;color:var(--accent);margin-bottom:8px}
+.skill-cat{font-size:12px;font-weight:500;margin-bottom:6px}
+.skill-items{font-size:12px;color:var(--text-s);line-height:1.8}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.proj-card{background:var(--bg-p);border:0.5px solid var(--bd);border-radius:var(--border-radius-lg);padding:1.25rem;transition:border-color 0.2s,transform 0.2s}
+.proj-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proj-card.featured{border:1.5px solid var(--accent)}
+.proj-badge{display:inline-block;background:var(--accent-light);color:#0F6E56;font-size:11px;padding:3px 9px;border-radius:12px;margin-bottom:10px}
+.proj-title{font-size:15px;font-weight:500;margin-bottom:6px}
+.proj-desc{font-size:13px;color:var(--text-s);line-height:1.6;margin-bottom:12px}
+.proj-metrics{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.metric{display:flex;align-items:center;gap:5px;font-size:12px;color:#0F6E56;background:var(--accent-light);padding:3px 8px;border-radius:12px}
+.proj-link{font-size:12px;color:var(--accent);display:flex;align-items:center;gap:4px}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.test-card{background:var(--bg-s);border-radius:var(--border-radius-lg);padding:1.25rem}
+.test-stars{color:var(--accent);font-size:13px;margin-bottom:8px;letter-spacing:2px}
+.test-text{font-size:13px;color:var(--text-s);line-height:1.7;margin-bottom:12px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:10px}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#0F6E56;flex-shrink:0}
+.author-name{font-size:13px;font-weight:500}
+.author-role{font-size:11px;color:var(--text-s)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-row{display:flex;align-items:center;gap:12px}
+.contact-icon{width:36px;height:36px;border-radius:var(--border-radius-md);background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--accent);flex-shrink:0}
+.contact-label{font-size:11px;color:var(--text-s)}
+.contact-value{font-size:13px;font-weight:500}
+.cert-list{display:flex;flex-direction:column;gap:10px}
+.cert-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-s)}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+footer{text-align:center;padding:2rem;font-size:12px;color:var(--text-s);border-top:0.5px solid var(--bd)}
+@media(max-width:520px){.hero h1{font-size:28px}.tl-item{grid-template-columns:1fr}.tl-date{padding-bottom:0}.contact-grid{grid-template-columns:1fr}}
+</style>
 
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/revamp.css" rel="stylesheet">
-</head>
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Amalsha Fernando — AI Engineer Portfolio with about, experience, skills, projects, and contact sections</h2>
 
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top glass-card m-3 border-0">
-    <div class="container-fluid px-4">
-      <a class="navbar-brand fw-bold text-white" href="#">AMALSHA</a>
-      <div class="d-flex">
-        <a href="#projects" class="nav-link mx-3 text-dim">Projects</a>
-        <a href="#skills" class="nav-link mx-3 text-dim">Orbit</a>
-        <a href="#experience" class="nav-link mx-3 text-dim">Stream</a>
-        <a href="#contact" class="nav-link ms-3 text-dim">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="neural-orb-container">
-      <div class="neural-orb"></div>
-    </div>
-    <h1 class="hero-title">Engineering<br>Agentic Intelligence.</h1>
-    <p class="hero-subtitle mb-5">// DATA SCIENTIST @ MLOPS ARCHITECT</p>
-
-    <div class="glass-card p-2 px-4 shadow-lg" style="width: 100%; max-width: 500px; border-radius: 50px;">
-      <div class="d-flex align-items-center">
-        <span class="text-accent me-3 fw-bold"> > </span>
-        <input type="text" class="terminal-input bg-transparent border-0 text-white w-100 py-2" style="outline: none;"
-          placeholder="Ask my agent anything...">
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Gallery (Bento Cloud) -->
-  <section id="projects" class="container py-5">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">The Bento Cloud</h2>
-      <p class="text-dim">Telemetry from the latest deployments</p>
-    </div>
-
-    <div class="bento-grid">
-      <!-- Large Card: Sinhala TTS -->
-      <div class="bento-item large glass-card">
-        <h3 class="fw-bold mb-3">Sinhala TTS Engine</h3>
-        <p class="text-dim">High-fidelity voice synthesis using VITS, optimized for low-latency local execution.
-          Includes custom Romanization (IAST) preprocessors.</p>
-        <div class="telemetry">
-          <span>STATUS: DEPLOYED</span>
-          <span>LATENCY: 42ms</span>
-          <span>VOCAB_SYNC: 100%</span>
-        </div>
-      </div>
-
-      <!-- Wide Card: Revenue Dashboard -->
-      <div class="bento-item wide glass-card">
-        <h3 class="fw-bold mb-2">Neem Jay Revenue Intelligence</h3>
-        <p class="text-dim small">AI-powered dashboard for hotel revenue forecasting and pricing recommendations.</p>
-        <div class="telemetry d-flex justify-content-between">
-          <span>ACCURACY: 94.2%</span>
-          <span>REAL_TIME: ACTIVE</span>
-        </div>
-      </div>
-
-      <!-- Normal Card: MLOps Pipeline -->
-      <div class="bento-item glass-card">
-        <i class="bi bi-gear-fill text-accent fs-1 mb-3"></i>
-        <h4 class="fw-bold">Agile MLOps</h4>
-        <p class="text-dim small">Automated CI/CD for ML models.</p>
-      </div>
-
-      <!-- Normal Card: Text-to-Speech -->
-      <div class="bento-item glass-card">
-        <i class="bi bi-mic-fill text-accent fs-1 mb-3"></i>
-        <h4 class="fw-bold">NLP Preprocessing</h4>
-        <p class="text-dim small">Custom IAST character configurations.</p>
-      </div>
-
-      <!-- Wide Card: Education -->
-      <div class="bento-item wide glass-card">
-        <h4 class="fw-bold">BSc (Hons) IT @ SLIIT</h4>
-        <p class="text-dim">Specialized in Machine Learning & Software Engineering. 2024 Graduate.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Stack (The Orbit) -->
-  <section id="skills" class="py-5 overflow-hidden">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">The Tech Orbit</h2>
-      <p class="text-dim">A galaxy of interconnected dependencies</p>
-    </div>
-
-    <div class="tech-orbit-container">
-      <div class="orbit-center">
-        <img src="assets/img/profile-pic.jpg" alt="Amalsha" class="rounded-circle img-fluid p-2">
-      </div>
-      <!-- Orbit items injected via JS -->
-    </div>
-  </section>
-
-  <!-- Timeline (The Data Stream) -->
-  <section id="experience" class="container py-5">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">Operational Timeline</h2>
-      <p class="text-dim">Logging career evolution...</p>
-    </div>
-
-    <div class="data-stream">
-      <div class="stream-node glass-card">
-        <h4 class="fw-bold text-accent">AI Engineer & Data Scientist</h4>
-        <p class="mb-1 text-dim">Present | Freelance / Self-Directed</p>
-        <p class="small">Building agentic systems and fine-tuning specialized LLMs/TTS models.</p>
-      </div>
-
-      <div class="stream-node glass-card">
-        <h4 class="fw-bold text-accent">Software Developer Internship</h4>
-        <p class="mb-1 text-dim">2023 | Enterprise Solutions</p>
-        <p class="small">Developed full-stack web applications and optimized database queries for high-traffic
-          platforms.</p>
-      </div>
-
-      <div class="stream-node glass-card">
-        <h4 class="fw-bold text-accent">IT Graduate Program</h4>
-        <p class="mb-1 text-dim">2020 - 2024 | SLIIT</p>
-        <p class="small">Core focus on Algorithms, AI, and Software Engineering principles.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="container py-5 mb-5">
-    <div class="glass-card p-5 text-center">
-      <h2 class="fw-bold mb-4">Establish Connection</h2>
-      <p class="text-dim mb-5">Currently open for collaborative AI ventures.</p>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <i class="bi bi-envelope fs-2 text-accent"></i>
-          <p class="mt-2">amalshafernand@gmail.com</p>
-        </div>
-        <div class="col-md-4">
-          <i class="bi bi-linkedin fs-2 text-accent"></i>
-          <p class="mt-2">amalshafernando</p>
-        </div>
-        <div class="col-md-4">
-          <i class="bi bi-geo-alt fs-2 text-accent"></i>
-          <p class="mt-2">Ratnapura, Sri Lanka</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI Resume Bot -->
-  <div id="ai-bot-orb" class="ai-bot-orb">
-    <i class="bi bi-stars text-white fs-3"></i>
+<nav>
+  <span class="nav-logo">AF.</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </div>
+</nav>
 
-  <div id="chat-interface" class="chat-interface glass-card p-0 shadow-lg overflow-hidden">
-    <div
-      class="bg-primary p-3 bg-opacity-25 border-bottom border-white border-opacity-10 d-flex justify-content-between align-items-center">
-      <span class="fw-bold">RAG Agent Alpha</span>
-      <small class="text-accent">ONLINE</small>
-    </div>
-    <div class="flex-grow-1 p-3 overflow-auto" id="chat-messages">
-      <div class="mb-3">
-        <small class="text-accent d-block mb-1">BOT</small>
-        <div class="glass-card py-2 px-3 d-inline-block rounded-3" style="font-size: 0.9rem;">
-          Hello! I'm Amalsha's AI assistant. I have access to his full documentation and codebase. How can I help?
-        </div>
+<div class="hero fade-in" id="about">
+  <div class="hero-badge"><i class="ti ti-cpu" aria-hidden="true"></i> Available for opportunities</div>
+  <h1>Amalsha <span>Fernando</span></h1>
+  <p class="hero-sub">Associate AI/ML Engineer specializing in LLM engineering, RAG systems, and multi-agent orchestration. Building intelligent systems that scale.</p>
+  <div class="hero-cta">
+    <button class="btn-primary" onclick="sendPrompt('Generate a tailored cover letter for Amalsha Fernando')">Generate cover letter ↗</button>
+    <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">10K+</div><div class="stat-label">Daily interactions handled</div></div>
+    <div class="stat"><div class="stat-num">40%</div><div class="stat-label">Response time reduction</div></div>
+    <div class="stat"><div class="stat-num">95%</div><div class="stat-label">STT accuracy achieved</div></div>
+    <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Years AI/ML experience</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<section class="fade-in" id="experience">
+  <p class="section-label">Career</p>
+  <h2 class="section-title">Work experience</h2>
+  <p class="section-sub">BSc (Hons) IT · Sri Lanka Institute of Information Technology · 2020–2024</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Dec 2025 – Present</div>
+      <div class="tl-body">
+        <div class="tl-company">EchonLabs (Pvt) Ltd · Battaramulla, Sri Lanka</div>
+        <div class="tl-role">Associate AI/ML Engineer</div>
+        <div class="tl-desc">Leading R&D on NLP solutions for Sinhala language processing, pushing the boundaries of low-resource language AI.</div>
+        <div class="tl-tags"><span class="tag">NLP</span><span class="tag">Sinhala TTS</span><span class="tag">LLM engineering</span></div>
       </div>
     </div>
-    <div class="p-3 border-top border-white border-opacity-10">
-      <input type="text" class="bg-transparent border-0 text-white w-100" placeholder="Type a message..."
-        style="outline: none;">
+    <div class="tl-item">
+      <div class="tl-date">Jan 2025 – Dec 2025</div>
+      <div class="tl-body">
+        <div class="tl-company">EchonLabs (Pvt) Ltd · Battaramulla, Sri Lanka</div>
+        <div class="tl-role">Trainee AI/ML Engineer</div>
+        <div class="tl-desc">Built a natural language SQL assistant for non-technical users, designed large-scale SEO optimization systems, and developed multi-agent communication platforms integrating voice, email, and messaging APIs.</div>
+        <div class="tl-tags"><span class="tag">LangGraph</span><span class="tag">Multi-agent</span><span class="tag">FastAPI</span><span class="tag">Twilio</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Jun 2024 – Nov 2024</div>
+      <div class="tl-body">
+        <div class="tl-company">OXZON AI · Northampton, UK (Remote)</div>
+        <div class="tl-role">AI/ML Engineering Intern</div>
+        <div class="tl-desc">Designed RAG systems using vector databases, fine-tuned deep learning models, and built scalable embedding pipelines through iterative experimentation.</div>
+        <div class="tl-tags"><span class="tag">RAG</span><span class="tag">Vector DB</span><span class="tag">Fine-tuning</span><span class="tag">EDA</span></div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/revamp.js"></script>
-</body>
+<hr class="divider">
 
-</html>
+<section class="fade-in" id="skills">
+  <p class="section-label">Capabilities</p>
+  <h2 class="section-title">Technical skills</h2>
+  <p class="section-sub">A full-stack AI skillset from model training to production deployment.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-brain" aria-hidden="true"></i></div>
+      <div class="skill-cat">AI / ML</div>
+      <div class="skill-items">PyTorch · Hugging Face · Transformers · OpenAI API · LLMs · NLP · Deep Learning</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-circuit-board" aria-hidden="true"></i></div>
+      <div class="skill-cat">Agentic systems</div>
+      <div class="skill-items">LangChain · LangGraph · RAG · Multi-agent orchestration · Vector DBs</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-server" aria-hidden="true"></i></div>
+      <div class="skill-cat">Backend</div>
+      <div class="skill-items">Python · FastAPI · Django · Flask · RESTful APIs · PostgreSQL · MongoDB</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-cloud" aria-hidden="true"></i></div>
+      <div class="skill-cat">Cloud & DevOps</div>
+      <div class="skill-items">AWS · Docker · Git · CI/CD · Airflow · Agile · SDLC</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-database" aria-hidden="true"></i></div>
+      <div class="skill-cat">Databases</div>
+      <div class="skill-items">PostgreSQL · MySQL · MongoDB · Vector Databases</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-code" aria-hidden="true"></i></div>
+      <div class="skill-cat">Languages</div>
+      <div class="skill-items">Python · JavaScript · HTML · CSS</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="fade-in" id="projects">
+  <p class="section-label">Portfolio</p>
+  <h2 class="section-title">Featured projects</h2>
+  <p class="section-sub">Production systems and research work demonstrating real-world AI impact.</p>
+  <div class="projects-grid">
+    <div class="proj-card featured">
+      <div class="proj-badge">⭐ Featured</div>
+      <div class="proj-title">Multi-Agent Communication Platform</div>
+      <div class="proj-desc">Enterprise-grade communication system with LangGraph-based orchestration and persistent memory, integrating voice, email, and messaging channels in a unified interface.</div>
+      <div class="proj-metrics">
+        <span class="metric"><i class="ti ti-chart-bar" aria-hidden="true"></i> 10K+ daily interactions</span>
+        <span class="metric"><i class="ti ti-bolt" aria-hidden="true"></i> 40% faster responses</span>
+        <span class="metric"><i class="ti ti-microphone" aria-hidden="true"></i> 95% STT accuracy</span>
+      </div>
+      <div class="tl-tags"><span class="tag">LangGraph</span><span class="tag">Twilio</span><span class="tag">Deepgram</span><span class="tag">WhatsApp API</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-badge">Healthcare AI</div>
+      <div class="proj-title">Medical Report Summarizer</div>
+      <div class="proj-desc">Flask web app for extracting and summarizing medical PDFs using fine-tuned BART, with OCR, PII anonymization, and HIPAA/GDPR compliance.</div>
+      <div class="tl-tags" style="margin-bottom:12px"><span class="tag">Flask</span><span class="tag">PyTorch</span><span class="tag">LoRA</span><span class="tag">OCR</span></div>
+      <a class="proj-link" href="https://github.com/amalshafernando/MedicalReportSummarizer" target="_blank"><i class="ti ti-brand-github" aria-hidden="true"></i> github.com/amalshafernando</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-badge">NLP</div>
+      <div class="proj-title">Sentiment Analysis System</div>
+      <div class="proj-desc">Multi-model sentiment classifier comparing Logistic Regression, Naive Bayes, Decision Tree, Random Forest, and SVM with a Flask prediction API.</div>
+      <div class="tl-tags" style="margin-bottom:12px"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Flask</span><span class="tag">NLP</span></div>
+      <a class="proj-link" href="https://github.com/amalshafernando/Classification-Sentiment-Analysis-project" target="_blank"><i class="ti ti-brand-github" aria-hidden="true"></i> View on GitHub</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-badge">Full-stack</div>
+      <div class="proj-title">SEO Traffic Simulation Platform</div>
+      <div class="proj-desc">Full-stack application simulating organic traffic with Selenium automation, realistic behavior patterns, and IP rotation via proxy services for geo-specific SEO testing.</div>
+      <div class="tl-tags"><span class="tag">FastAPI</span><span class="tag">Angular</span><span class="tag">MongoDB</span><span class="tag">Selenium</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="fade-in">
+  <p class="section-label">Research</p>
+  <h2 class="section-title">Publication</h2>
+  <p class="section-sub">Peer-reviewed academic research in autonomous systems and environmental AI.</p>
+  <div class="proj-card" style="max-width:100%">
+    <div class="proj-badge">IRJIET · 2023</div>
+    <div class="proj-title">Autopilot Eco Plane to Reduce Air Pollution</div>
+    <div class="proj-desc">Conceptualized and designed an autonomous drone equipped with air quality sensors for pollution detection, with mobile app integration for real-time monitoring and data analysis for predicting pollution impact on lifespan and environmental sustainability.</div>
+    <div class="tl-tags" style="margin-bottom:12px"><span class="tag">Autonomous systems</span><span class="tag">IoT</span><span class="tag">Data analysis</span><span class="tag">SLIIT 2023</span></div>
+    <a class="proj-link" href="https://irjiet.com/Volume-7/Issue-11-November-2023/Autopilot-Eco-Plane-to-Reduce-Air-Pollution/1932" target="_blank"><i class="ti ti-external-link" aria-hidden="true"></i> Read the paper</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="fade-in">
+  <p class="section-label">Testimonials</p>
+  <h2 class="section-title">What colleagues say</h2>
+  <p class="section-sub">From the people who've worked alongside me at EchonLabs.</p>
+  <div class="testimonial-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"Amalsha consistently delivers production-ready AI solutions. His LangGraph multi-agent platform handled over 10,000 daily interactions without issue — impressive engineering from concept to deployment."</div>
+      <div class="test-author">
+        <div class="avatar">DB</div>
+        <div><div class="author-name">Damith Bandara</div><div class="author-role">Co-Founder & COO · EchonLabs</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"A proactive, collaborative team member who brings both technical depth and strong communication skills. His work on NLP for Sinhala is pioneering research that sets him apart in the local AI community."</div>
+      <div class="test-author">
+        <div class="avatar">BS</div>
+        <div><div class="author-name">Buddhini Sewwandi</div><div class="author-role">HR Officer · EchonLabs</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="fade-in" id="contact">
+  <p class="section-label">Connect</p>
+  <h2 class="section-title">Get in touch</h2>
+  <p class="section-sub">Open to remote AI/ML roles, research collaborations, and consulting engagements.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div><div class="contact-label">Email</div><div class="contact-value">amalshafernand@gmail.com</div></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
+        <div><div class="contact-label">Phone</div><div class="contact-value">+94 71 258 6284</div></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+        <div><div class="contact-label">Location</div><div class="contact-value">Ratnapura, Sri Lanka</div></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div>
+        <div><div class="contact-label">LinkedIn</div><div class="contact-value"><a href="https://linkedin.com/in/amalshafernando">linkedin.com/in/amalshafernando</a></div></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon"><i class="ti ti-brand-github" aria-hidden="true"></i></div>
+        <div><div class="contact-label">GitHub</div><div class="contact-value"><a href="https://github.com/amalshafernando">github.com/amalshafernando</a></div></div>
+      </div>
+    </div>
+    <div>
+      <p class="section-label" style="margin-bottom:1rem">Certifications</p>
+      <div class="cert-list">
+        <div class="cert-item"><span class="cert-dot"></span>Azure Fundamentals · Microsoft</div>
+        <div class="cert-item"><span class="cert-dot"></span>Machine Learning Specialization · Stanford / Coursera</div>
+        <div class="cert-item"><span class="cert-dot"></span>Deep Learning Specialization · Stanford / Coursera (in progress)</div>
+        <div class="cert-item"><span class="cert-dot"></span>AI ML Engineer Stage 1 & 2 · SLIIT</div>
+      </div>
+      <div style="margin-top:2rem">
+        <button class="btn-primary" onclick="sendPrompt('Help me write a message to Amalsha Fernando about a job opportunity')">Reach out about a role ↗</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Amalsha Fernando · AI/ML Engineer · Ratnapura, Sri Lanka</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
